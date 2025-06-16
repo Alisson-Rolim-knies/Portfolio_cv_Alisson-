@@ -89,21 +89,7 @@ function Footer() {
             className="text-center md:text-right"
           >
             <p className="text-muted-foreground flex items-center justify-center md:justify-end gap-1">
-              © {currentYear} Feito com
-              <motion.span
-                animate={{
-                  scale: [1, 1.2, 1],
-                  color: ['#ef4444', '#f97316', '#ef4444']
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Heart size={16} fill="currentColor" />
-              </motion.span>
-              por Alisson Rolim
+              © {currentYear} Feito por Alisson Rolim
             </p>
           </motion.div>
         </div>
