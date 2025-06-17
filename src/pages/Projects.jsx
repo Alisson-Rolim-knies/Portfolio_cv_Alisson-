@@ -278,7 +278,7 @@ function Projects() {
           </motion.a>
 
           <motion.a
-            href="/Contact"
+            href="/Contato"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 border-2 border-[#4B0082] text-[#4B0082] bg-transparent rounded-xl font-medium transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg active:scale-95 hover:bg-[#4B0082] hover:text-white"
