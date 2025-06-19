@@ -14,9 +14,9 @@ function App() {
         <AnimatePresence mode='wait'>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sobre" element={<About />} />
-            <Route path="/projetos" element={<Projects />} />
-            <Route path="/contato" element={<Contact />} />
+            <Route path="/Sobre" element={<About />} />
+            <Route path="/Projetos" element={<Projects />} />
+            <Route path="/Contato" element={<Contact />} />
           </Routes>
         </AnimatePresence>
       </Layout>
