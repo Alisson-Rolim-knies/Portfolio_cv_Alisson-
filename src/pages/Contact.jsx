@@ -30,21 +30,43 @@ function Contact() {
     });
   };
 
+  // 👇 ESTA É A FUNÇÃO QUE FOI ALTERADA
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Envia os dados do formulário para o seu endpoint do Formspree
+      const response = await fetch('https://formspree.io/f/mwpbbdjw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      // Se o envio for bem-sucedido...
+      if (response.ok) {
+        setIsSubmitted(true); // Mostra a mensagem de sucesso
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+        // Limpa o formulário e a mensagem de sucesso após 3 segundos
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        }, 3000);
+      } else {
+        // Caso ocorra um erro no servidor do Formspree
+        alert('Houve um erro ao enviar sua mensagem. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      // Caso ocorra um erro de rede (ex: sem internet)
+      console.error('Erro ao submeter o formulário:', error);
+      alert('Houve um erro ao enviar sua mensagem. Por favor, tente novamente.');
+    } finally {
+      // Garante que o botão de "Enviando..." volte ao normal
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -450,4 +472,3 @@ function Contact() {
 }
 
 export default Contact;
-
